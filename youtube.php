@@ -6,7 +6,8 @@ header("Location: https://www.youtube.com".$url);
 function generateVideoId() {
     $lowerLet = asciiChars();
     $upperLet = strtoupper(asciiChars());
-    $all = $lowerLet . $upperLet . '-_';
+    $numbers = '0123456789';
+    $all = $lowerLet . $upperLet . '-_' . $numbers;
     $videoId = '';
 
     for ($i = 0; $i < 11; $i++) {
