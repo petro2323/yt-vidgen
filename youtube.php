@@ -4,17 +4,23 @@ $url = '/watch?v='.generateVideoId();
 header("Location: https://www.youtube.com".$url);
 
 function generateVideoId() {
-    $lowerCaseLetters = 'abcdefghijklmnopqrstuvwxyz';
-    $upperCaseLetters = strtoupper($lowerCaseLetters);
-    $numbers = '0123456789';
-    $characters = $lowerCaseLetters . $upperCaseLetters . $numbers;
-
+    $lowerLet = asciiChars();
+    $upperLet = strtoupper(asciiChars());
+    $all = $lowerLet . $upperLet . '-_';
     $videoId = '';
 
     for ($i = 0; $i < 11; $i++) {
-        $videoId .= $characters[rand(0, strlen($characters) - 1)];
+        $videoId .= $all[rand(0, strlen($all) - 1)];
     }
 
     return $videoId;
+}
+
+function asciiChars() {
+    $characters = '';
+    for($i = 97; $i < 123; $i++) {
+        $characters .= chr($i);
+    }
+    return $characters;
 }
 
